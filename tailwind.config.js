@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    cream:'#FFF8E7',
   },
   plugins: [],
 }
