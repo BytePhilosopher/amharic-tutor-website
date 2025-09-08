@@ -25,7 +25,7 @@ export default function Home() {
       <section className="relative bg-[#F1F2E1] text-[#384127] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center overflow-hidden">
         <div className="md:w-1/2">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Dr. Yenealem Tadesse
+            Dr. Atsede Maru
           </h1>
           <p className="text-xl md:text-2xl mb-6 text-[#4E5340]">
             PhD in Amharic Literature | Assistant Professor | International Tutor | 20+ Years Teaching Experience
@@ -40,7 +40,7 @@ export default function Home() {
         <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
           <img
             src="/profile-photo.jpg"
-            alt="Dr. Yenealem Tadesse"
+            alt="Dr. Atsede Maru"
             className="rounded-xl shadow-2xl w-80 h-80 object-cover border-4 border-[#6B8F71]"
           />
         </div>
