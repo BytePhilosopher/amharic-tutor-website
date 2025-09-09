@@ -1,6 +1,6 @@
 // pages/index.tsx
 import { FaChalkboardTeacher, FaBook, FaGlobe, FaGraduationCap } from 'react-icons/fa';
-
+import imge from "../../public/Atsede Propic.jpeg"
 const experiences = [
   { year: '2000', event: 'Started teaching at XYZ School', icon: <FaChalkboardTeacher /> },
   { year: '2010', event: 'Completed Masters in Education', icon: <FaGraduationCap /> },
@@ -39,12 +39,13 @@ export default function Home() {
         </div>
         <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
           <img
-            src="/profile-photo.jpg"
+            src="../../public/Atsede Propic.jpeg"
             alt="Dr. Atsede Maru"
             className="rounded-xl shadow-2xl w-80 h-80 object-cover border-4 border-[#6B8F71]"
           />
         </div>
       </section>
+      
 
       {/* Curved SVG transition to Expertise */}
       <div className="relative -mt-1">
