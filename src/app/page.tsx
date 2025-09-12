@@ -1,6 +1,13 @@
 // pages/index.tsx
+"use client";
+
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaChalkboardTeacher, FaBook, FaGlobe, FaGraduationCap } from 'react-icons/fa';
 import Image from "next/image";
+
+// Experiences timeline data
 const experiences = [
   { year: '2000', event: 'Started teaching at XYZ School', icon: <FaChalkboardTeacher /> },
   { year: '2010', event: 'Completed Masters in Education', icon: <FaGraduationCap /> },
@@ -8,9 +15,54 @@ const experiences = [
   { year: '2023', event: 'PhD in Amharic Literature', icon: <FaBook /> },
 ];
 
+// Fade-up animation config
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+  }),
+};
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // fake loading time (2.5s)
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-[#F1F2E1] font-sans">
+      <div className="bg-[#F1F2E1] font-sans">
+      {/* Preloader */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            className="fixed inset-0 bg-[#384127] flex flex-col items-center justify-center z-[9999]"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold text-white mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Dr. Atsede Maru
+            </motion.h1>
+            <motion.div
+              className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     {/* Navbar */}
     <nav className="bg-gradient-to-r from-[#384127] to-[#6B8F71] text-white py-4 px-6 md:px-20 flex justify-between items-center sticky top-0 z-50 shadow-md">
       <h1 className="text-2xl font-bold">Dr. Atsede Maru</h1>
@@ -33,31 +85,55 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <section className="relative bg-[#F1F2E1] text-[#384127] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center overflow-hidden">
-        <div className="md:w-1/2">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Dr. Atsede Maru
-          </h1>
-          <p className="text-xl md:text-2xl mb-6 text-[#4E5340]">
-            PhD in Amharic Literature | Assistant Professor | International Tutor | 20+ Years Teaching Experience
-          </p>
-          <a
-            href="#contact"
-            className="inline-block bg-[#6B8F71] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#384127] transition"
-          >
-            Contact Me
-          </a>
-        </div>
-        <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-<img
-  src="/Atsede Propic.jpeg"
-  alt="Dr. Atsede Maru"
-  className="rounded-xl shadow-2xl w-80 h-80 object-cover object-center border-4 border-[#6B8F71]"
-/>
+    <section className="relative bg-[#F1F2E1] text-[#384127] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center overflow-hidden">
+      {/* Left: Animated Text */}
+      <div className="md:w-1/2">
+        <motion.h1
+          className="text-5xl md:text-6xl font-bold mb-4 flex flex-wrap"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.05 },
+            },
+          }}
+        >
+          {"Dr. Atsede Maru".split("").map((char, index) => (
+            <motion.span
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h1>
 
+        <p className="text-xl md:text-2xl mb-6 text-[#4E5340]">
+          PhD in Amharic Literature | Assistant Professor | International Tutor | 20+ Years Teaching Experience
+        </p>
+        <a
+          href="#contact"
+          className="inline-block bg-[#6B8F71] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#384127] transition"
+        >
+          Contact Me
+        </a>
+      </div>
 
-        </div>
-      </section>
+      {/* Right: Profile Picture */}
+      <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+        <img
+          src="/atsede propic.jpeg"
+          alt="Dr. Atsede Maru"
+          className="rounded-xl shadow-2xl w-80 h-80 object-cover border-4 border-[#6B8F71]"
+        />
+
+      </div>
+    </section>
+
       
 
       {/* Curved SVG transition to Expertise */}
