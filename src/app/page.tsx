@@ -1,6 +1,6 @@
 // pages/index.tsx
 import { FaChalkboardTeacher, FaBook, FaGlobe, FaGraduationCap } from 'react-icons/fa';
-import imge from "../../public/Atsede Propic.jpeg"
+import Image from "next/image";
 const experiences = [
   { year: '2000', event: 'Started teaching at XYZ School', icon: <FaChalkboardTeacher /> },
   { year: '2010', event: 'Completed Masters in Education', icon: <FaGraduationCap /> },
@@ -11,15 +11,26 @@ const experiences = [
 export default function Home() {
   return (
     <div className="bg-[#F1F2E1] font-sans">
-      {/* Navbar */}
-      <nav className="bg-gradient-to-r from-[#384127] to-[#6B8F71] text-white py-4 px-6 md:px-20 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        <h1 className="text-2xl font-bold">Dr. Atsede Maru</h1>
-        <div className="space-x-6">
-          <a href="#expertise" className="hover:underline">Expertise</a>
-          <a href="#timeline" className="hover:underline">Journey</a>
-          <a href="#contact" className="hover:underline">Contact</a>
-        </div>
-      </nav>
+    {/* Navbar */}
+    <nav className="bg-gradient-to-r from-[#384127] to-[#6B8F71] text-white py-4 px-6 md:px-20 flex justify-between items-center sticky top-0 z-50 shadow-md">
+      <h1 className="text-2xl font-bold">Dr. Atsede Maru</h1>
+      <div className="space-x-6 flex items-center">
+        <a href="#expertise" className="hover:underline">Expertise</a>
+        <a href="#timeline" className="hover:underline">Journey</a>
+        <a href="#testimonials" className="hover:underline">Testimonials</a>
+        <a href="#contact" className="hover:underline">Contact</a>
+
+        {/* Download CV */}
+        <a
+          href="/Dr-Atsede-Maru-CV.pdf"
+          download
+          className="bg-[#D4DE95] text-[#384127] px-4 py-2 rounded-lg font-semibold hover:bg-white hover:text-[#384127] transition"
+        >
+          Download CV
+        </a>
+      </div>
+    </nav>
+
 
       {/* Hero Section */}
       <section className="relative bg-[#F1F2E1] text-[#384127] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center overflow-hidden">
@@ -38,11 +49,13 @@ export default function Home() {
           </a>
         </div>
         <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-          <img
-            src="../../public/Atsede Propic.jpeg"
-            alt="Dr. Atsede Maru"
-            className="rounded-xl shadow-2xl w-80 h-80 object-cover border-4 border-[#6B8F71]"
-          />
+<img
+  src="/Atsede Propic.jpeg"
+  alt="Dr. Atsede Maru"
+  className="rounded-xl shadow-2xl w-80 h-80 object-cover object-center border-4 border-[#6B8F71]"
+/>
+
+
         </div>
       </section>
       
@@ -131,13 +144,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+    <section id="testimonials" className="bg-[#E8E9D8] py-20 px-6 md:px-20 text-center">
+      <h2 className="text-4xl md:text-5xl font-bold mb-12 text-[#384127]">
+        Testimonials
+      </h2>
+
+      <div className="grid md:grid-cols-3 gap-10">
+        {/* Testimonial 1 */}
+        <div className="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition">
+          <div className="flex flex-col items-center">
+            <Image
+              src="/testimonial1.jpg"
+              alt="John Doe"
+              width={100}
+              height={100}
+              className="rounded-full mb-4 object-cover"
+            />
+            <h3 className="text-2xl font-semibold text-[#384127] mb-1">John Doe</h3>
+            <p className="text-[#4E5340] italic mb-2">Parent</p>
+            <p className="text-[#4E5340]">
+              “Dr. Atsede’s guidance and teaching transformed my child’s learning experience. Highly recommended!”
+            </p>
+          </div>
+        </div>
+
+        {/* Testimonial 2 */}
+        <div className="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition">
+          <div className="flex flex-col items-center">
+            <Image
+              src="/testimonial2.jpg"
+              alt="Mary Smith"
+              width={100}
+              height={100}
+              className="rounded-full mb-4 object-cover"
+            />
+            <h3 className="text-2xl font-semibold text-[#384127] mb-1">Mary Smith</h3>
+            <p className="text-[#4E5340] italic mb-2">Student</p>
+            <p className="text-[#4E5340]">
+              “Her tutoring style is exceptional. I gained so much confidence in my Amharic skills.”
+            </p>
+          </div>
+        </div>
+
+        {/* Testimonial 3 */}
+        <div className="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition">
+          <div className="flex flex-col items-center">
+            <Image
+              src="/testimonial3.jpg"
+              alt="Samuel Bekele"
+              width={100}
+              height={100}
+              className="rounded-full mb-4 object-cover"
+            />
+            <h3 className="text-2xl font-semibold text-[#384127] mb-1">Samuel Bekele</h3>
+            <p className="text-[#4E5340] italic mb-2">Colleague</p>
+            <p className="text-[#4E5340]">
+              “Working with Dr. Atsede was a pleasure. Her research expertise and mentorship are outstanding.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
       {/* Contact Section */}
       <section id="contact" className="bg-white py-20 px-6 md:px-20 text-center">
         <h2 className="text-4xl font-bold mb-6 text-[#384127]">Get in Touch</h2>
         <p className="mb-8 text-[#4E5340]">Interested in tutoring, research collaboration, or speaking engagements?</p>
         <a
-          href="mailto:example@email.com"
+          href="mailto:dmatsede@gmail.com"
           className="inline-block bg-[#6B8F71] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#384127] transition"
         >
           Email Me
