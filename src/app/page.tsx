@@ -419,7 +419,7 @@ export default function Home() {
                 <div className="absolute inset-0 rounded-full blur-2xl opacity-[0.15]"
                   style={{ background: 'radial-gradient(circle, #B08D3A, transparent)' }} />
                 <img
-                  src="/Atsede Propic.jpeg"
+                  src="/profilepic.jpg"
                   alt="Dr. Atsede Maru Dessie"
                   className="relative w-full h-full object-cover rounded-full shadow-2xl"
                   style={{ border: '3px solid rgba(176,141,58,0.4)', filter: 'grayscale(30%) contrast(1.05)' }}
