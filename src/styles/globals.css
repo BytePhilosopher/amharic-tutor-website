@@ -2,3 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ──────────────────────────────────────────────────────────────────────────────
+   ጥልፍ (Ethiopian Embroidery) Theme — Card & UI Accents
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/* Cards with a ጥልፍ-inspired gold top accent on hover */
+.tilf-card {
+  position: relative;
+  overflow: hidden;
+}
+.tilf-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(176, 141, 58, 0.1) 15%,
+    rgba(176, 141, 58, 0.6) 50%,
+    rgba(176, 141, 58, 0.1) 85%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.tilf-card:hover::before {
+  opacity: 1;
+}
+
+/* Elegant gold underline accent for headings */
+.tilf-heading {
+  position: relative;
+  display: inline-block;
+}
+.tilf-heading::after {
+  content: '✙';
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #B08D3A;
+  opacity: 0.4;
+  letter-spacing: 1.2em;
+}
+
+/* Subtle shimmer on ጥልፍ borders */
+@keyframes tilf-shimmer {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+.tilf-shimmer {
+  animation: tilf-shimmer 4s ease-in-out infinite;
+}
