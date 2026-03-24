@@ -203,22 +203,27 @@ export default function Home() {
       </AnimatePresence>
 
       {/* ─────────────────────────────────────────────────────────────────────
-          HERO
+          HERO — Clean White Theme
       ───────────────────────────────────────────────────────────────────── */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: '#14261E' }}
+        style={{ backgroundColor: '#ffffff' }}
       >
-        {/* Decorative background */}
+        {/* Subtle geometric grid pattern */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.025]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #14261E 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+        {/* Decorative accents */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-8"
+          <div className="absolute -top-60 -right-60 w-[800px] h-[800px] rounded-full opacity-[0.035]"
             style={{ background: 'radial-gradient(circle, #B08D3A, transparent)' }} />
-          <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full opacity-[0.03]"
-            style={{ background: 'radial-gradient(circle, #5D7E60, transparent)' }} />
+          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.02]"
+            style={{ background: 'radial-gradient(circle, #14261E, transparent)' }} />
         </div>
 
-        {/* ጥልፍ embroidery overlay */}
-        <TilfOverlay color="#B08D3A" opacity={0.03} />
+        {/* Bottom fade to cream */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #F8F7F4)' }} />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-6 pt-28 sm:pt-32 pb-20 sm:pb-24 lg:py-0 w-full">
 
@@ -227,28 +232,32 @@ export default function Home() {
 
             {/* Photo */}
             <motion.div
-              className="relative mb-8 sm:mb-10"
+              className="relative mb-10 sm:mb-12"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.8, duration: 0.9 }}
             >
-              <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60">
-                {/* Outer decorative ring */}
-                <div className="absolute -inset-3 sm:-inset-4 rounded-full"
-                  style={{ border: '1px solid rgba(176,141,58,0.25)' }} />
-                {/* Second ring */}
-                <div className="absolute -inset-6 sm:-inset-8 rounded-full"
-                  style={{ border: '1px solid rgba(176,141,58,0.08)' }} />
+              <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                {/* Animated rotating ring */}
+                <motion.div
+                  className="absolute -inset-4 sm:-inset-5 rounded-full"
+                  style={{ border: '1.5px dashed rgba(176,141,58,0.2)' }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                />
+                {/* Static ring */}
+                <div className="absolute -inset-2 sm:-inset-3 rounded-full"
+                  style={{ border: '1.5px solid rgba(176,141,58,0.15)' }} />
                 <img
                   src="/profilepic.jpg"
                   alt="Dr. Atsede Maru Dessie"
-                  className="w-full h-full object-cover rounded-full shadow-2xl"
-                  style={{ border: '3px solid rgba(176,141,58,0.4)', filter: 'grayscale(30%) contrast(1.05)' }}
+                  className="relative w-full h-full object-cover rounded-full shadow-xl"
+                  style={{ border: '3px solid rgba(176,141,58,0.25)' }}
                 />
                 {/* Credential badge */}
                 <motion.div
-                  className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full shadow-xl whitespace-nowrap"
-                  style={{ backgroundColor: '#B08D3A' }}
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full shadow-lg whitespace-nowrap"
+                  style={{ backgroundColor: '#14261E' }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 2.6, duration: 0.5 }}
@@ -266,12 +275,12 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.0, duration: 0.6 }}
             >
-              ✙  ዶ/ር አፀዴ ማሩ  ✙
+              ዶ/ር አፀዴ ማሩ
             </motion.p>
 
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.1, duration: 0.8 }}
@@ -281,28 +290,33 @@ export default function Home() {
             </motion.h1>
 
             <motion.div
-              className="w-12 h-0.5 mx-auto mb-5"
-              style={{ backgroundColor: '#B08D3A' }}
-              initial={{ width: 0 }}
-              animate={{ width: 48 }}
+              className="flex items-center gap-3 mb-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 2.3, duration: 0.6 }}
-            />
+            >
+              <div className="w-8 h-[1.5px] rounded-full" style={{ backgroundColor: '#B08D3A' }} />
+              <span className="text-[10px] tracking-[0.2em] uppercase font-semibold" style={{ color: '#B08D3A' }}>Scholar &amp; Educator</span>
+              <div className="w-8 h-[1.5px] rounded-full" style={{ backgroundColor: '#B08D3A' }} />
+            </motion.div>
 
             <motion.p
-              className="text-base sm:text-lg text-white/65 mb-1 leading-relaxed"
+              className="text-base sm:text-lg mb-1.5 leading-relaxed max-w-md"
+              style={{ color: '#3d3d3d' }}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.4, duration: 0.6 }}
             >
-              PhD in Teaching Amharic
+              Bringing 25+ years of expertise in Amharic language education, research, and cultural preservation.
             </motion.p>
             <motion.p
-              className="text-xs sm:text-sm text-white/40 mb-7 tracking-wide"
+              className="text-xs sm:text-sm mb-8 tracking-wide"
+              style={{ color: '#8a8a78' }}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.5 }}
             >
-              Lecturer · Researcher · Preply Amharic Tutor
+              Bahir Dar University · Preply Amharic Tutor
             </motion.p>
 
             <motion.div
@@ -314,14 +328,14 @@ export default function Home() {
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:-translate-y-0.5"
-                style={{ backgroundColor: '#B08D3A', color: '#fff' }}
+                style={{ backgroundColor: '#14261E', color: '#fff' }}
               >
                 Get in Touch <FiArrowRight size={16} />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5 text-white"
-                style={{ border: '1px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }}
+                className="inline-flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5"
+                style={{ color: '#14261E', border: '1.5px solid rgba(20,38,30,0.2)' }}
               >
                 View Profile
               </Link>
@@ -334,18 +348,18 @@ export default function Home() {
             {/* Left: Text — 7 columns */}
             <div className="lg:col-span-7 xl:col-span-6">
               <motion.p
-                className="text-sm font-medium tracking-[0.3em] mb-4"
+                className="text-sm font-medium tracking-[0.3em] mb-5"
                 style={{ color: '#B08D3A' }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.8, duration: 0.6 }}
               >
-                ✙  ዶ/ር አፀዴ ማሩ  ✙
+                ዶ/ር አፀዴ ማሩ
               </motion.p>
 
               <motion.h1
-                className="text-5xl xl:text-7xl font-bold text-white leading-tight mb-5"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-5xl xl:text-7xl font-bold leading-tight mb-6"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.9, duration: 0.8 }}
@@ -355,28 +369,33 @@ export default function Home() {
               </motion.h1>
 
               <motion.div
-                className="w-16 h-0.5 mb-6"
-                style={{ backgroundColor: '#B08D3A' }}
-                initial={{ width: 0 }}
-                animate={{ width: 64 }}
+                className="flex items-center gap-3 mb-7"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 2.2, duration: 0.6 }}
-              />
+              >
+                <div className="w-10 h-[1.5px] rounded-full" style={{ backgroundColor: '#B08D3A' }} />
+                <span className="text-[11px] tracking-[0.2em] uppercase font-semibold" style={{ color: '#B08D3A' }}>Scholar &amp; Educator</span>
+                <div className="w-10 h-[1.5px] rounded-full" style={{ backgroundColor: '#B08D3A' }} />
+              </motion.div>
 
               <motion.p
-                className="text-lg text-white/65 mb-1.5 leading-relaxed"
+                className="text-lg xl:text-xl mb-2 leading-relaxed max-w-lg"
+                style={{ color: '#3d3d3d' }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.3, duration: 0.6 }}
               >
-                PhD in Teaching Amharic
+                Bringing 25+ years of expertise in Amharic language education, research, and cultural preservation.
               </motion.p>
               <motion.p
-                className="text-sm text-white/40 mb-8 tracking-wide"
+                className="text-sm mb-10 tracking-wide"
+                style={{ color: '#8a8a78' }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.4, duration: 0.5 }}
               >
-                Lecturer · Researcher · Preply Amharic Tutor
+                Bahir Dar University · Preply Amharic Tutor
               </motion.p>
 
               <motion.div
@@ -388,14 +407,14 @@ export default function Home() {
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:-translate-y-0.5"
-                  style={{ backgroundColor: '#B08D3A', color: '#fff' }}
+                  style={{ backgroundColor: '#14261E', color: '#fff' }}
                 >
                   Get in Touch <FiArrowRight size={16} />
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5 text-white"
-                  style={{ border: '1px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5"
+                  style={{ color: '#14261E', border: '1.5px solid rgba(20,38,30,0.2)' }}
                 >
                   View Profile
                 </Link>
@@ -409,25 +428,30 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.8, duration: 0.9 }}
             >
-              <div className="relative w-72 h-72 xl:w-[340px] xl:h-[340px]">
-                {/* Outer decorative rings */}
-                <div className="absolute -inset-5 rounded-full"
-                  style={{ border: '1px solid rgba(176,141,58,0.2)' }} />
-                <div className="absolute -inset-10 rounded-full"
-                  style={{ border: '1px solid rgba(176,141,58,0.07)' }} />
-                {/* Subtle glow behind photo */}
-                <div className="absolute inset-0 rounded-full blur-2xl opacity-[0.15]"
+              <div className="relative w-80 h-80 xl:w-[400px] xl:h-[400px]">
+                {/* Animated rotating ring */}
+                <motion.div
+                  className="absolute -inset-6 rounded-full"
+                  style={{ border: '1.5px dashed rgba(176,141,58,0.15)' }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                />
+                {/* Static ring */}
+                <div className="absolute -inset-3 rounded-full"
+                  style={{ border: '1.5px solid rgba(176,141,58,0.12)' }} />
+                {/* Soft warm glow */}
+                <div className="absolute inset-0 rounded-full blur-3xl opacity-[0.08]"
                   style={{ background: 'radial-gradient(circle, #B08D3A, transparent)' }} />
                 <img
                   src="/profilepic.jpg"
                   alt="Dr. Atsede Maru Dessie"
                   className="relative w-full h-full object-cover rounded-full shadow-2xl"
-                  style={{ border: '3px solid rgba(176,141,58,0.4)', filter: 'grayscale(30%) contrast(1.05)' }}
+                  style={{ border: '3px solid rgba(176,141,58,0.25)' }}
                 />
                 {/* Credential badge */}
                 <motion.div
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full shadow-xl whitespace-nowrap"
-                  style={{ backgroundColor: '#B08D3A' }}
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-6 py-2.5 rounded-full shadow-lg whitespace-nowrap"
+                  style={{ backgroundColor: '#14261E' }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 2.6, duration: 0.5 }}
@@ -441,13 +465,14 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+          className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.8, duration: 0.6 }}
         >
+          <span className="text-[10px] tracking-[0.2em] uppercase" style={{ color: 'rgba(20,38,30,0.3)' }}>Scroll</span>
           <motion.div
-            className="w-px h-8 origin-top"
+            className="w-px h-6 origin-top"
             style={{ backgroundColor: 'rgba(176,141,58,0.4)' }}
             animate={{ scaleY: [0, 1, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -458,79 +483,81 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────────────
           STATS BAR
       ───────────────────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: '#B08D3A' }}>
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-8 sm:py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section style={{ backgroundColor: '#14261E' }}>
+        <TilfBorder className="tilf-shimmer" opacity={0.5} height={32} />
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-10 sm:py-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
-                className="flex flex-col items-center text-center text-white"
+                className="flex flex-col items-center text-center"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i}
                 variants={fadeUp}
               >
-                <span className="text-white/60 text-2xl mb-1">{s.icon}</span>
-                <span className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{s.value}</span>
-                <span className="text-sm text-white/70 mt-1 tracking-wide">{s.label}</span>
-                <span className="text-xs text-white/40 mt-0.5">{s.amharic}</span>
+                <span className="text-2xl mb-2" style={{ color: '#B08D3A' }}>{s.icon}</span>
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{s.value}</span>
+                <span className="text-sm text-white/70 mt-2 tracking-wide">{s.label}</span>
+                <span className="text-xs mt-0.5" style={{ color: '#B08D3A', opacity: 0.6 }}>{s.amharic}</span>
               </motion.div>
             ))}
           </div>
         </div>
+        <TilfBorder className="tilf-shimmer" opacity={0.5} height={32} />
       </section>
-
-      <TilfBorder className="tilf-shimmer" />
 
       {/* ─────────────────────────────────────────────────────────────────────
           CULTURAL PROVERB BANNER
       ───────────────────────────────────────────────────────────────────── */}
-      <section className="py-10 px-6 text-center overflow-hidden" style={{ backgroundColor: '#F8F7F4' }}>
-        <TilfDivider />
+      <section className="py-14 sm:py-16 px-6 text-center overflow-hidden" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-2xl mx-auto">
-          <motion.p
-            className="text-xs font-semibold tracking-[0.35em] uppercase mb-4"
-            style={{ color: '#B08D3A' }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            ምሳሌ · Ethiopian Proverb
-          </motion.p>
-          <motion.p
-            className="text-3xl md:text-4xl font-bold leading-snug mb-3"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={1}
-            variants={fadeUp}
-          >
-            ቋንቋ የባህል መሰረት ነው
-          </motion.p>
-          <motion.p
-            className="text-base italic"
-            style={{ color: '#8a8a78' }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={2}
-            variants={fadeUp}
-          >
-            "Language is the foundation of culture"
-          </motion.p>
+          <TilfDivider />
+          <div className="py-6">
+            <motion.p
+              className="text-xs font-semibold tracking-[0.35em] uppercase mb-5"
+              style={{ color: '#B08D3A' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              ምሳሌ · Ethiopian Proverb
+            </motion.p>
+            <motion.p
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-snug mb-4"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={1}
+              variants={fadeUp}
+            >
+              ቋንቋ የባህል መሰረት ነው
+            </motion.p>
+            <motion.p
+              className="text-base sm:text-lg italic"
+              style={{ color: '#8a8a78' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={2}
+              variants={fadeUp}
+            >
+              &ldquo;Language is the foundation of culture&rdquo;
+            </motion.p>
+          </div>
+          <TilfDivider />
         </div>
-        <TilfDivider />
       </section>
 
       {/* ─────────────────────────────────────────────────────────────────────
           ABOUT PREVIEW
       ───────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 md:py-24 px-5 sm:px-6" style={{ backgroundColor: '#F8F7F4' }}>
+      <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Image collage */}
             <motion.div
               className="relative"
@@ -539,23 +566,31 @@ export default function Home() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
+              {/* Decorative background element */}
+              <div className="absolute -top-4 -left-4 w-full h-full rounded-2xl"
+                style={{ backgroundColor: 'rgba(176,141,58,0.08)', border: '1px solid rgba(176,141,58,0.1)' }} />
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
                 <img
                   src="/Atsede Propic.jpeg"
                   alt="Dr. Atsede Maru Dessie"
                   className="w-full h-full object-cover"
-                  style={{ filter: 'grayscale(25%) contrast(1.05)' }}
+                  style={{ filter: 'grayscale(15%) contrast(1.05)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                {/* Name overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white/50 text-xs tracking-[0.2em] uppercase mb-1">Bahir Dar University</p>
+                  <p className="text-white font-semibold text-lg" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>Lecturer &amp; Researcher</p>
+                </div>
               </div>
               {/* Floating credential card */}
               <div
-                className="absolute -right-2 sm:-right-6 bottom-6 sm:bottom-10 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl max-w-[160px] sm:max-w-[180px]"
+                className="absolute -right-2 sm:-right-6 top-8 sm:top-12 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl max-w-[160px] sm:max-w-[180px]"
                 style={{ backgroundColor: '#14261E', border: '1px solid rgba(176,141,58,0.2)' }}
               >
-                <p className="text-xs font-medium mb-2" style={{ color: '#B08D3A' }}>Current Position</p>
-                <p className="text-white text-sm font-semibold leading-snug">Lecturer &amp; Researcher</p>
-                <p className="text-white/50 text-xs mt-1">Bahir Dar University</p>
+                <p className="text-xs font-medium mb-2" style={{ color: '#B08D3A' }}>Best Dissertation</p>
+                <p className="text-white text-sm font-semibold leading-snug">PhD Award</p>
+                <p className="text-white/50 text-xs mt-1">Bahir Dar University, 2023</p>
               </div>
             </motion.div>
 
@@ -642,11 +677,14 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────────────
           EXPERTISE
       ───────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 md:py-24 px-5 sm:px-6" style={{ backgroundColor: '#EDECE6' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 relative" style={{ backgroundColor: '#ffffff' }}>
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #14261E 1px, transparent 0)', backgroundSize: '48px 48px' }} />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-20">
             <motion.p
-              className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+              className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
               style={{ color: '#B08D3A' }}
               initial="hidden"
               whileInView="visible"
@@ -656,7 +694,7 @@ export default function Home() {
               Core Strengths
             </motion.p>
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
               initial="hidden"
               whileInView="visible"
@@ -666,29 +704,45 @@ export default function Home() {
             >
               Areas of Expertise
             </motion.h2>
+            <motion.p
+              className="text-base max-w-xl mx-auto"
+              style={{ color: '#8a8a78' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={2}
+              variants={fadeUp}
+            >
+              A unique blend of academic rigor and practical teaching experience spanning three decades.
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {expertise.map((item, i) => (
               <motion.div
                 key={i}
-                className="tilf-card group p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
-                style={{ backgroundColor: '#fff' }}
+                className="tilf-card group p-8 sm:p-10 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer relative overflow-hidden"
+                style={{ backgroundColor: '#F8F7F4', border: '1px solid rgba(20,38,30,0.06)' }}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i}
                 variants={fadeUp}
               >
+                {/* Decorative number */}
+                <span className="absolute top-4 right-6 text-7xl font-bold pointer-events-none select-none"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", color: 'rgba(176,141,58,0.06)' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all group-hover:scale-110"
-                  style={{ backgroundColor: 'rgba(20,38,30,0.08)', color: '#14261E' }}
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all group-hover:scale-110 group-hover:rounded-2xl"
+                  style={{ backgroundColor: '#14261E', color: '#B08D3A' }}
                 >
                   {item.icon}
                 </div>
                 <span
-                  className="text-xs font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4 inline-block"
-                  style={{ backgroundColor: 'rgba(176,141,58,0.12)', color: '#B08D3A' }}
+                  className="text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full mb-5 inline-block"
+                  style={{ backgroundColor: 'rgba(176,141,58,0.1)', color: '#B08D3A' }}
                 >
                   {item.tag}
                 </span>
@@ -706,8 +760,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <TilfDivider />
 
       {/* ─────────────────────────────────────────────────────────────────────
           TIMELINE
@@ -799,8 +851,6 @@ export default function Home() {
         </div>
       </section>
 
-      <TilfBorder className="tilf-shimmer" />
-
       {/* ─────────────────────────────────────────────────────────────────────
           PUBLICATIONS
       ───────────────────────────────────────────────────────────────────── */}
@@ -888,11 +938,11 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────────────
           TESTIMONIALS
       ───────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 md:py-24 px-5 sm:px-6" style={{ backgroundColor: '#EDECE6' }}>
+      <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <motion.p
-              className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+              className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
               style={{ color: '#B08D3A' }}
               initial="hidden"
               whileInView="visible"
@@ -902,7 +952,7 @@ export default function Home() {
               Kind Words
             </motion.p>
             <motion.h2
-              className="text-4xl md:text-5xl font-bold"
+              className="text-4xl md:text-5xl font-bold mb-5"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#14261E' }}
               initial="hidden"
               whileInView="visible"
@@ -912,35 +962,50 @@ export default function Home() {
             >
               What People Say
             </motion.h2>
+            <motion.p
+              className="text-base max-w-lg mx-auto"
+              style={{ color: '#8a8a78' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={2}
+              variants={fadeUp}
+            >
+              Hear from students, colleagues, and collaborators about their experience working with Dr. Atsede.
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
-                className="tilf-card bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
+                className="tilf-card bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 relative"
+                style={{ border: '1px solid rgba(20,38,30,0.06)' }}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i}
                 variants={fadeUp}
               >
-                <FaQuoteLeft size={28} className="mb-5 opacity-20" style={{ color: '#14261E' }} />
-                <p className="text-sm leading-relaxed mb-7" style={{ color: '#5a5a4a' }}>
-                  "{t.text}"
-                </p>
-                <div className="flex items-center gap-4">
+                {/* Large decorative quote */}
+                <div className="absolute top-6 right-6">
+                  <FaQuoteLeft size={40} style={{ color: 'rgba(176,141,58,0.08)' }} />
+                </div>
+                <div className="flex items-center gap-4 mb-6">
                   <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
                     style={{ backgroundColor: '#14261E' }}
                   >
                     {t.initials}
                   </div>
                   <div>
                     <p className="font-semibold text-sm" style={{ color: '#14261E' }}>{t.name}</p>
-                    <p className="text-xs mt-0.5" style={{ color: '#9a9a88' }}>{t.role}</p>
+                    <p className="text-xs mt-0.5" style={{ color: '#B08D3A' }}>{t.role}</p>
                   </div>
                 </div>
+                <p className="text-sm leading-relaxed" style={{ color: '#5a5a4a' }}>
+                  &ldquo;{t.text}&rdquo;
+                </p>
               </motion.div>
             ))}
           </div>
@@ -950,40 +1015,57 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────────────
           CTA
       ───────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 md:py-28 px-5 sm:px-6 text-center relative overflow-hidden" style={{ backgroundColor: '#14261E' }}>
+      <section className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 text-center relative overflow-hidden" style={{ backgroundColor: '#14261E' }}>
+        {/* Layered decorative background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-10"
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-[0.08]"
             style={{ background: 'radial-gradient(ellipse, #B08D3A, transparent)' }} />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.04]"
+            style={{ background: 'radial-gradient(circle, #B08D3A, transparent)' }} />
         </div>
-        <TilfOverlay color="#B08D3A" opacity={0.03} />
+        <TilfOverlay color="#B08D3A" opacity={0.02} />
         <div className="relative max-w-3xl mx-auto">
+          {/* Decorative Amharic script */}
           <motion.p
-            className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
-            style={{ color: '#B08D3A' }}
+            className="text-2xl sm:text-3xl mb-6 font-medium"
+            style={{ color: 'rgba(176,141,58,0.15)', fontFamily: "'Playfair Display', Georgia, serif" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            Let&apos;s Connect
+            ቋንቋ ነፍስ ነው
           </motion.p>
-          <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          <motion.p
+            className="text-xs font-semibold tracking-[0.3em] uppercase mb-5"
+            style={{ color: '#B08D3A' }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
             variants={fadeUp}
           >
-            Ready to Begin Your Amharic Journey?
-          </motion.h2>
-          <motion.p
-            className="text-white/60 text-base mb-10 leading-relaxed"
+            Let&apos;s Connect
+          </motion.p>
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={2}
+            variants={fadeUp}
+          >
+            Ready to Begin Your
+            <span className="italic" style={{ color: '#B08D3A' }}> Amharic </span>
+            Journey?
+          </motion.h2>
+          <motion.p
+            className="text-white/55 text-base sm:text-lg mb-12 leading-relaxed max-w-xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={3}
             variants={fadeUp}
           >
             Whether you&apos;re a heritage learner, a student, or seeking expert collaboration — Dr. Atsede is here to guide you.
@@ -993,20 +1075,20 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={3}
+            custom={4}
             variants={fadeUp}
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all hover:shadow-xl hover:-translate-y-0.5 transform"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all hover:shadow-xl hover:-translate-y-0.5 transform text-sm sm:text-base"
               style={{ backgroundColor: '#B08D3A', color: '#fff' }}
             >
               <FiMail size={16} /> Get in Touch
             </Link>
             <button
               onClick={downloadCvAsPdf}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all hover:-translate-y-0.5 transform text-white cursor-pointer"
-              style={{ border: '1px solid rgba(255,255,255,0.25)' }}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all hover:-translate-y-0.5 transform text-white cursor-pointer text-sm sm:text-base"
+              style={{ border: '1px solid rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
             >
               <FiDownload size={16} /> Download CV
             </button>

@@ -7,6 +7,11 @@ export const metadata = {
   title: "Dr. Atsede Maru Dessie | PhD in Teaching Amharic",
   description:
     "Official academic portfolio of Dr. Atsede Maru Dessie — Lecturer, Researcher, and Amharic Language Educator at Bahir Dar University with 25+ years of experience.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -37,6 +37,9 @@ export default function Navbar() {
 
   const isTransparent = isHome && !scrolled && !isOpen
 
+  // On homepage with white hero: use dark text when transparent
+  const useDarkText = isTransparent && isHome
+
   return (
     <>
       <nav
@@ -54,11 +57,11 @@ export default function Navbar() {
           <Link href="/" className="group relative z-50">
             <div className="flex flex-col leading-tight">
               <span className="text-[10px] sm:text-xs tracking-[0.2em] font-medium" style={{ color: '#B08D3A' }}>
-                ✙ ዶ/ር አፀዴ ማሩ
+                ዶ/ር አፀዴ ማሩ
               </span>
               <span
-                className="font-bold text-[15px] sm:text-lg text-white leading-tight"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="font-bold text-[15px] sm:text-lg leading-tight transition-colors duration-500"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: useDarkText ? '#14261E' : '#ffffff' }}
               >
                 Dr. Atsede Maru
               </span>
@@ -73,9 +76,16 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-[13px] font-medium tracking-wide uppercase transition-all relative group ${
-                    active ? "text-white" : "text-white/55 hover:text-white"
-                  }`}
+                  className="text-[13px] font-medium tracking-wide uppercase transition-all duration-500 relative group"
+                  style={{
+                    color: active
+                      ? (useDarkText ? '#14261E' : '#ffffff')
+                      : (useDarkText ? 'rgba(20,38,30,0.5)' : 'rgba(255,255,255,0.55)')
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = useDarkText ? '#14261E' : '#ffffff'}
+                  onMouseLeave={(e) => {
+                    if (!active) e.currentTarget.style.color = useDarkText ? 'rgba(20,38,30,0.5)' : 'rgba(255,255,255,0.55)'
+                  }}
                 >
                   {link.label}
                   <span
@@ -89,8 +99,11 @@ export default function Navbar() {
             })}
             <button
               onClick={downloadCvAsPdf}
-              className="flex items-center gap-2 text-[13px] font-semibold px-4 py-2 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5 cursor-pointer ml-1"
-              style={{ backgroundColor: '#fff', color: '#B08D3A' }}
+              className="flex items-center gap-2 text-[13px] font-semibold px-4 py-2 rounded-full transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer ml-1"
+              style={useDarkText
+                ? { backgroundColor: '#14261E', color: '#ffffff' }
+                : { backgroundColor: '#fff', color: '#B08D3A' }
+              }
             >
               <FiDownload size={13} />
               CV
@@ -111,7 +124,7 @@ export default function Navbar() {
                 </motion.div>
               ) : (
                 <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <FiMenu size={20} className="text-white" />
+                  <FiMenu size={20} style={{ color: useDarkText ? '#14261E' : '#ffffff' }} />
                 </motion.div>
               )}
             </AnimatePresence>

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling & selection */
+html {
+  scroll-behavior: smooth;
+}
+::selection {
+  background-color: rgba(176, 141, 58, 0.2);
+  color: #14261E;
+}
+
 /* ──────────────────────────────────────────────────────────────────────────────
    ጥልፍ (Ethiopian Embroidery) Theme — Card & UI Accents
    ────────────────────────────────────────────────────────────────────────────── */
